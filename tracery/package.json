@@ -1,0 +1,16 @@
+{
+  "name": "tracery",
+  "version": "0.0.0",
+  "description": "npm package for Kate Compton's tracery",
+  "main": "traceryCore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kate Compton (packaged by v21)",
+  "license": "ISC",
+  "dependencies":
+  {
+  	 "amdefine": ">=0.1.0",
+  	 "extend" : "2.x"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "tracerybot",
+  "version": "0.0.0",
+  "description": "twitterbot generating from tracery",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "v21",
+  "license": "ISC",
+  "dependencies":
+  {
+  	"twit" : "1.x",
+  	 "tracery": "./tracery/"
+  }
+}
