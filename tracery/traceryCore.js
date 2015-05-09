@@ -21,9 +21,6 @@ define(["./utilities", "./grammar", "./node"], function(traceryUtilities, Gramma
         return grammar;
     };
 
-    tracery.addError = function(error) {
-        console.warn(error);
-    };
 
     tracery.test = function() {
 

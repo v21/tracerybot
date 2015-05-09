@@ -1,57 +1,133 @@
-console.log("hello");
-
 var tracery = require('tracery');
 
-var rawGrammar = {
-        move : ["flock", "race", "glide", "dance", "flee", "lie"],
-
-        bird : ["swan", "heron", "sparrow", "swallow", "wren", "robin"],
-        agent : ["cloud", "wave", "#bird#", "boat", "ship"],
-
-        transVerb : ["forget", "plant", "greet", "remember", "embrace", "feel", "love"],
-        emotion : ["sorrow", "gladness", "joy", "heartache", "love", "forgiveness", "grace"],
-        substance : ["#emotion#", "mist", "fog", "glass", "silver", "rain", "dew", "cloud", "virtue", "sun", "shadow", "gold", "light", "darkness"],
-        adj : ["fair", "bright", "splendid", "divine", "inseparable", "fine", "lazy", "grand", "slow", "quick", "graceful", "grave", "clear", "faint", "dreary"],
-        doThing : ["come", "move", "cry", "weep", "laugh", "dream"],
-
-        verb : ["fleck", "grace", "bless", "dapple", "touch", "caress", "smooth", "crown", "veil"],
-        ground : ["glen", "river", "vale", "sea", "meadow", "forest", "glade", "grass", "sky", "waves"],
-
-        poeticAdj : ["#substance#-#verb.ed#"],
-        poeticDesc : ["#poeticAdj#", "by #substance# #verb#'d", "#adj# with #substance#", "#verb.ed# with #substance#"],
-
-        ah : ["ah", "alas", "oh", "yet", "but", "and"],
-        on : ["on", "in", "above", "beneath", "under", "by"],
-
-punctutation: [",", ":", " ", "!", ".", "?"],
-
-        noun : ["#ground#", "#agent#"],
-        line : ["My #noun#, #poeticDesc#, my #adj# one", "More #adj# than #noun# #poeticDesc#", "#move.capitalize# with me #on# #poeticAdj# #ground#", "The #agent.s# #move#, #adj# and #adj#", "#poeticDesc.capitalize#, #poeticDesc#, #ah#, #poeticDesc#", "How #adj# is the #poeticDesc# #sub#", "#poeticDesc.capitalize# with #emotion#, #transVerb.s# the #noun#"],
-      poem: ["#line##punctutation#<br>#line##punctutation#<br>#line##punctutation#<br>#line#."],
-        origin : "#[sub:#noun#]poem#",
-    };
+var rawGrammar = 
+{
+	"origin": [
+		"... take the #ordinal# #direction# after #landmark# ...",
+		"... continue past #landmark#, then turn #direction# ...",
+		"... you should go past #landmark# ...",
+		"... be on the lookout for #landmark# ...",
+		"... cut through to the #direction# ...",
+		"... carry on for #distance# ...",
+		"(if you see #landmark# #too far#)",
+		"... carry on past #landmark# ...",
+		"... go past #landmark# ...",
+		"... then under #bridge# ...",
+		"... there'll be #landmark# to your #direction# ...",
+		"... then past #landmark# ...",
+		"... take the #ordinal# #direction# ...",
+		"... continue for #distance# ...",
+		"... after #distance#, turn #direction# ...",
+		"... then turn #direction# ...",
+		"... turn #direction# here ...",
+		"... #ordinal# #direction# ...",
+		"... #direction# ...",
+		"... veer #direction# #possiblejunction# ...",
+		"... keep going til you see #landmark# ..."
+	],
+	"direction": [
+		"left",
+		"right"
+	],
+	"ordinal": [
+		"first",
+		"second",
+		"third"
+	],
+	"landmark": [
+		"the McDonalds",
+		"a rather nice pub",
+		"the petrol station",
+		"the old church",
+		"a little church",
+		"a small copse",
+		"the roundabout",
+		"a rather pretty little village green",
+		"the motorway",
+		"the canal",
+		"a pub",
+		"the signpost",
+		"a massive oak tree",
+		"a white building",
+		"the town center",
+		"a corner shop",
+		"the Co-op",
+		"the big Tescos",
+		"Morrisons",
+		"a multistorey",
+		"that italian restaurant we went to that one time",
+		"the river",
+		"boats",
+		"the fairground",
+		"the park",
+		"a pizza place"
+	],
+	"distance": [
+		"half a mile",
+		"a few hundred meters",
+		"a few more minutes",
+		"a little bit further",
+		"a few miles",
+		"one and a half miles",
+		"a while",
+		"3 miles",
+		"a few more turnings",
+		"a few blocks",
+		"most of the way down",
+		"about a kilometer",
+		"a mile",
+		"a bit",
+		"- well, it's about 10 minutes on foot",
+		"half a kilometer",
+		"nearly ten miles",
+		"just under four miles"
+	],
+	"bridge": [
+		"the bridge",
+		"the motorway",
+		"a railway line",
+		"the bypass"
+	],
+	"too far": [
+		"you've went too far",
+		"you should double back",
+		"you're nearly there",
+		"turn round",
+		"keep going"
+	],
+	"possiblejunction": [
+		" ",
+		"at the junction",
+		"by the #landmark#",
+		"when you meet the road coming down from #landmark#",
+		" ",
+		"at the roundabout"
+	]
+}
 
 var processedGrammar = tracery.createGrammar(rawGrammar);
 
 
+var tweet = processedGrammar.flatten("#origin#");
+console.log(tweet);
 
 
 var Twit = require('twit');
 
 
-var T = new Twit({
-    consumer_key:         '...'
-  , consumer_secret:      '...'
-  , access_token:         '...'
-  , access_token_secret:  '...'
+var T = new Twit(
+{
+    consumer_key:         'QTjZ0plqqG2FfLauWQ4nxjdmN'
+  , consumer_secret:      'zA7Hcgd7Ua57oi7NtRvD4xzjhtAcH3j14yYheHvTWUGqGTK4gC'
+  , access_token:         '3240350423-DKyIDPEHlSnBw0tVIabwxT4D91CTtIxXjSsN0IG'
+  , access_token_secret:  'dfRWrTixtrtRizUggZWukYD1KzqaadyTRhKGOqHbYIWfA'
+}
+);
+
+
+T.post('statuses/update', { status: tweet }, function(err, data, response) {
+  //console.log(data)
 })
 
-
-T.post('statuses/update', { status: 'hello world!' }, function(err, data, response) {
-  console.log(data)
-})
-
-var tweet = processedGrammar.flatten("#origin#");
-console.log(tweet);
 
 
