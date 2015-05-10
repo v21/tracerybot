@@ -1,5 +1,5 @@
 {
-  "name": "tracery",
+  "name": "tracery-grammar",
   "version": "0.0.0",
   "description": "npm package for Kate Compton's tracery",
   "main": "traceryCore.js",

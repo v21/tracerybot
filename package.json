@@ -11,6 +11,6 @@
   "dependencies":
   {
   	"twit" : "1.x",
-  	 "tracery": "./tracery/"
+  	 "tracery-grammar": "./tracery-grammar/"
   }
 }
