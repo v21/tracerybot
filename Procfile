@@ -1,1 +1,1 @@
-worker:  node bot.js
+worker:  ./run_bot.sh
