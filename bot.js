@@ -109,7 +109,7 @@ var processedGrammar = tracery.createGrammar(rawGrammar);
 
 
 var tweet = processedGrammar.flatten("#origin#");
-console.log(tweet);
+//console.log(tweet);
 
 
 var Twit = require('twit');

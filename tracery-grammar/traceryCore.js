@@ -11,7 +11,6 @@ define(["./utilities", "./grammar", "./node"], function(traceryUtilities, Gramma
     'use strict';
 
     var tracery = {};
-    console.log("in main tracery");
     var extend = require('extend')
     extend(tracery, traceryUtilities);
 

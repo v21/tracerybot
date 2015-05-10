@@ -9,7 +9,6 @@ define(["../utilities.js"], function(tracery) {
     
     
 
-    console.log(tracery);
 
     var Rule = function(raw) {
         this.raw = raw;
