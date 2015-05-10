@@ -1,4 +1,4 @@
-var tracery = require('tracery');
+var tracery = require('tracery-grammar');
 
 var rawGrammar = 
 {
@@ -116,12 +116,7 @@ var Twit = require('twit');
 
 
 var T = new Twit(
-{
-    consumer_key:         'QTjZ0plqqG2FfLauWQ4nxjdmN'
-  , consumer_secret:      'zA7Hcgd7Ua57oi7NtRvD4xzjhtAcH3j14yYheHvTWUGqGTK4gC'
-  , access_token:         '3240350423-DKyIDPEHlSnBw0tVIabwxT4D91CTtIxXjSsN0IG'
-  , access_token_secret:  'dfRWrTixtrtRizUggZWukYD1KzqaadyTRhKGOqHbYIWfA'
-}
+
 );
 
 
