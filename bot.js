@@ -107,6 +107,7 @@ var rawGrammar =
 
 var processedGrammar = tracery.createGrammar(rawGrammar);
 
+processedGrammar.addModifiers(tracery.baseEngModifiers); 
 
 var tweet = processedGrammar.flatten("#origin#");
 //console.log(tweet);
