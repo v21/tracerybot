@@ -1,7 +1,6 @@
 var tracery = require('tracery-grammar');
 
-var rawGrammar = 
-{
+var rawGrammar = {
 	"origin": [
 		"... take the #ordinal# #direction# after #landmark# ...",
 		"... continue past #landmark#, then turn #direction# ...",
@@ -107,7 +106,7 @@ var rawGrammar =
 
 var processedGrammar = tracery.createGrammar(rawGrammar);
 
-processedGrammar.addModifiers(tracery.baseEngModifiers); 
+processedGrammar.addModifiers(tracery.baseEngModifiers);
 
 var tweet = processedGrammar.flatten("#origin#");
 //console.log(tweet);
@@ -116,19 +115,16 @@ var tweet = processedGrammar.flatten("#origin#");
 var Twit = require('twit');
 
 
-var T = new Twit(
-{
-    consumer_key:         process.env.TWITTER_CONSUMER_KEY
-  , consumer_secret:      process.env.TWITTER_CONSUMER_SECRET
-  , access_token:         process.env.TWITTER_ACCESS_TOKEN
-  , access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET
-}
-);
+var T = new Twit({
+	consumer_key: process.env.TWITTER_CONSUMER_KEY,
+	consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+	access_token: process.env.TWITTER_ACCESS_TOKEN,
+	access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
 
 
-T.post('statuses/update', { status: tweet }, function(err, data, response) {
-  //console.log(data)
+T.post('statuses/update', {
+	status: tweet
+}, function (err, data, response) {
+	//console.log(data)
 })
-
-
-
